@@ -30,7 +30,6 @@ public class SimpleSolrExplain {
   }
 
   public static String simpleEDismaxJson(QueryResponse queryResponse, boolean prettyPrint) {
-    //ObjectMapper mapper = new ObjectMapperImpl();
     Gson gson = new GsonBuilder().create();
     if (prettyPrint) {
       gson = new GsonBuilder().setPrettyPrinting().create();
@@ -46,7 +45,6 @@ public class SimpleSolrExplain {
         jsonStr.append(",\n");
       }
       firstElement = false;
-      //jsonStr.append(mapper.toJson(entry.getValue()));
       jsonStr.append(gson.toJson(entry.getValue()));
     }
     jsonStr.append("\n]");
