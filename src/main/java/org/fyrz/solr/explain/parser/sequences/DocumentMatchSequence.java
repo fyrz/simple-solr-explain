@@ -29,11 +29,10 @@ public class DocumentMatchSequence extends ExplainElementSequence<DocumentMatch>
     documentMatch.setScore(documentScore);
 
     // check for max plus tie breaker
-    if (explainElements.size() > 5) {
-      if (explainElements.get(3).getType().equals(ExplainElementType.MAXPLUS) &&
-          explainElements.get(4).getType().equals(ExplainElementType.NUMBER)) {
+    if (explainElements.size() > 5 &&
+        explainElements.get(3).getType().equals(ExplainElementType.MAXPLUS) &&
+        explainElements.get(4).getType().equals(ExplainElementType.NUMBER)) {
         // processing logic TODO
-      }
     }
     return documentMatch;
   }

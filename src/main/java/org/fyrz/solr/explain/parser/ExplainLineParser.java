@@ -18,9 +18,9 @@ public class ExplainLineParser {
 
   private void preCompilePatterns() {
     final StringBuilder explainPatternsBuffer = new StringBuilder();
-    for (final ExplainElementType explainElementType : ExplainElementType.values())
-      explainPatternsBuffer.append(String.format("|(?<%s>%s)",
-          explainElementType.name(), explainElementType.getPattern()));
+    for (final ExplainElementType explainElementType : ExplainElementType.values()) {
+      explainPatternsBuffer.append(String.format("|(?<%s>%s)", explainElementType.name(), explainElementType.getPattern()));
+    }
     preCompiledPattern = Pattern.compile(explainPatternsBuffer.substring(1));
   }
 

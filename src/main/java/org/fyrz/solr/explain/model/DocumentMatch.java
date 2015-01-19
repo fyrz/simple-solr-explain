@@ -43,7 +43,7 @@ public class DocumentMatch {
    *
    * @param score double value.
    */
-  public void setScore(double score) {
+  public void setScore(Double score) {
     this.score = score;
   }
 
