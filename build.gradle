@@ -24,6 +24,10 @@ configure(allprojects) {
     apply plugin: 'propdeps-idea'
 }
 
+compileJava {
+    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+}
+
 repositories {
     maven { url "http://maven.restlet.org" }
     mavenCentral()
