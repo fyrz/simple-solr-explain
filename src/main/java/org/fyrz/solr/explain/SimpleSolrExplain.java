@@ -24,7 +24,7 @@ public class SimpleSolrExplain {
     if (queryParser == null || !queryParser.equals("ExtendedDismaxQParser")) {
       throw new IllegalArgumentException("Processing is limited to process debug output of ExtendedDismaxQParser.");
     }
-
+    @SuppressWarnings("unchecked")
     SimpleExplanation simpleExplanation = ExplainParser.parse((SimpleOrderedMap<String>)debugMap.get("explain"));
     return simpleExplanation;
   }
