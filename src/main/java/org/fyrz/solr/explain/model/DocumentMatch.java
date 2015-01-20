@@ -21,7 +21,6 @@ public class DocumentMatch {
   }
 
   /**
-   *
    * @return document documentId. This documentId is the same thing as configured in schema.xml
    * as unique key.
    */

@@ -32,7 +32,7 @@ public class DocumentMatchSequence extends ExplainElementSequence<DocumentMatch>
     if (explainElements.size() > 5 &&
         explainElements.get(3).getType().equals(ExplainElementType.MAXPLUS) &&
         explainElements.get(4).getType().equals(ExplainElementType.NUMBER)) {
-        // processing logic TODO
+      // processing logic TODO
     }
     return documentMatch;
   }

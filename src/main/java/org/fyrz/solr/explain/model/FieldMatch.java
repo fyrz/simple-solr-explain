@@ -5,11 +5,11 @@ import java.util.List;
 
 public class FieldMatch implements Comparable<FieldMatch> {
 
-  private  Double score;
+  private Double score;
 
-  private  String matchDescription;
+  private String matchDescription;
 
-  private  String similarityMethod;
+  private String similarityMethod;
 
   private final transient List<String> details = new ArrayList<>();
 
@@ -55,8 +55,7 @@ public class FieldMatch implements Comparable<FieldMatch> {
 
 
   @Override
-  public boolean equals(final Object o)
-  {
+  public boolean equals(final Object o) {
     if (this == o) {
       return true;
     }
@@ -81,8 +80,7 @@ public class FieldMatch implements Comparable<FieldMatch> {
   }
 
   @Override
-  public int hashCode()
-  {
+  public int hashCode() {
     int result = score != null ? score.hashCode() : 0;
     result = 31 * result + (matchDescription != null ? matchDescription.hashCode() : 0);
     result = 31 * result + (similarityMethod != null ? similarityMethod.hashCode() : 0);

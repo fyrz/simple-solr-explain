@@ -45,6 +45,13 @@ dependencies {
     provided('org.slf4j:slf4j-api:1.7.10')
     provided('org.slf4j:slf4j-simple:1.7.10')
     provided('org.apache.logging.log4j:log4j-to-slf4j:2.1')
+
+    provided('org.apache.solr:solr-test-framework:4.10.3') {
+        exclude(group: 'log4j', module: 'log4j')
+    }
+    provided('org.apache.solr:solr-core:4.10.3') {
+        exclude(group: 'log4j', module: 'log4j')
+    }
     provided('org.apache.solr:solr-solrj:4.10.3') {
         exclude(group: 'log4j', module: 'log4j')
     }
@@ -52,7 +59,5 @@ dependencies {
     testCompile('commons-logging:commons-logging:1.1.1')
     testCompile('junit:junit:4.11')
     testCompile('org.assertj:assertj-core:1.7.1')
-    testCompile('org.apache.solr:solr-test-framework:4.10.3') {
-        exclude(group: 'log4j', module: 'log4j')
-    }
+
 }

@@ -516,24 +516,24 @@
 
     </requestHandler>
 
-   <!-- Field Analysis Request Handler
+    <!-- Field Analysis Request Handler
 
-         RequestHandler that provides much the same functionality as
-         analysis.jsp. Provides the ability to specify multiple field
-         types and field names in the same request and outputs
-         index-time and query-time analysis for each of them.
+          RequestHandler that provides much the same functionality as
+          analysis.jsp. Provides the ability to specify multiple field
+          types and field names in the same request and outputs
+          index-time and query-time analysis for each of them.
 
-         Request parameters are:
-         analysis.fieldname - field name whose analyzers are to be used
+          Request parameters are:
+          analysis.fieldname - field name whose analyzers are to be used
 
-         analysis.fieldtype - field type whose analyzers are to be used
-         analysis.fieldvalue - text for index-time analysis
-         q (or analysis.q) - text for query time analysis
-         analysis.showmatch (true|false) - When set to true and when
-             query analysis is performed, the produced tokens of the
-             field value analysis will be marked as "matched" for every
-             token that is produces by the query analysis
-     -->
+          analysis.fieldtype - field type whose analyzers are to be used
+          analysis.fieldvalue - text for index-time analysis
+          q (or analysis.q) - text for query time analysis
+          analysis.showmatch (true|false) - When set to true and when
+              query analysis is performed, the produced tokens of the
+              field value analysis will be marked as "matched" for every
+              token that is produces by the query analysis
+      -->
     <requestHandler name="/analysis/field"
                     startup="lazy"
                     class="solr.FieldAnalysisRequestHandler"/>
@@ -574,8 +574,7 @@
                     startup="lazy"/>
 
 
-
-     <queryResponseWriter name="json" class="solr.JSONResponseWriter">
+    <queryResponseWriter name="json" class="solr.JSONResponseWriter">
         <!-- For the purposes of the tutorial, JSON responses are written as
          plain text so that they are easy to read in *any* browser.
          If you expect a MIME type of "application/json" just remove this override.
@@ -586,7 +585,8 @@
     <!--
        Custom response writers can be declared as needed...
       -->
-    <queryResponseWriter name="velocity" class="solr.VelocityResponseWriter" startup="lazy"/>
+    <queryResponseWriter name="simpleExplainJson" class="org.fyrz.solr.plugin.response.SimpleExplainJsonResponseWriter"
+                         startup="lazy"/>
 
     <!-- Legacy config for the admin interface -->
     <admin>

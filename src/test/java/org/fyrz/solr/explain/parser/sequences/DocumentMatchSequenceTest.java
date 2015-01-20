@@ -13,7 +13,7 @@ public class DocumentMatchSequenceTest {
   private final ExplainLineParser explainLineParser = new ExplainLineParser();
 
   @Test
-  public void isDescribedBy(){
+  public void isDescribedBy() {
     final String inLine = "0.5088134 = (MATCH) max plus 0.5 times others of:";
     List<ExplainElement> explainElements = explainLineParser.parseSingleLine(inLine);
 

@@ -15,14 +15,14 @@ public abstract class ExplainElementSequence<T> {
    * Method to check if a ordered list matches a passed prefix sequence and
    * does not contain any prohibited elements.
    *
-   * @param explainElements sequence to check.
-   * @param sequence prefix sequence.
+   * @param explainElements    sequence to check.
+   * @param sequence           prefix sequence.
    * @param prohibitedElements elements prohibited in sequence.
    * @return boolean value indicating if explainElements is valid for this type
-   *     of ExplainElementSequence.
+   * of ExplainElementSequence.
    */
   static boolean checkSequence(final List<ExplainElement> explainElements,
-      ExplainElementType[] sequence, ExplainElementType[] prohibitedElements) {
+                               ExplainElementType[] sequence, ExplainElementType[] prohibitedElements) {
     boolean ret = false;
     if (explainElements.size() >= sequence.length) {
       ret = true;

@@ -13,7 +13,7 @@ public class FieldMatchSequenceTest {
   private final ExplainLineParser explainLineParser = new ExplainLineParser();
 
   @Test
-  public void isDescribedBy(){
+  public void isDescribedBy() {
     final String inLine = " 0.49997503 = (MATCH) weight(title:xyz^10.0 in 2) [DefaultSimilarity], result of:";
     List<ExplainElement> explainElements = explainLineParser.parseSingleLine(inLine);
 

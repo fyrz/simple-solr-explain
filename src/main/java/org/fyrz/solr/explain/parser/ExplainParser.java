@@ -25,7 +25,6 @@ public class ExplainParser {
    * Parse explain string to SimpleExplanation structure.
    *
    * @param explainMap Solr SimpleOrderedMap.
-   *
    * @return SimpleExplanation instance.
    */
   public static SimpleExplanation parse(final SimpleOrderedMap<String> explainMap) {

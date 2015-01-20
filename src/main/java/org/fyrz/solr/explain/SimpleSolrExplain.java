@@ -25,31 +25,21 @@ public class SimpleSolrExplain {
       throw new IllegalArgumentException("Processing is limited to process debug output of ExtendedDismaxQParser.");
     }
     @SuppressWarnings("unchecked")
-    SimpleExplanation simpleExplanation = ExplainParser.parse((SimpleOrderedMap<String>)debugMap.get("explain"));
+    SimpleExplanation simpleExplanation = ExplainParser.parse((SimpleOrderedMap<String>) debugMap.get("explain"));
     return simpleExplanation;
   }
 
-  public static String simpleEDismaxJson(QueryResponse queryResponse, boolean prettyPrint) {
-    Gson gson = new GsonBuilder().create();
-    if (prettyPrint) {
-      gson = new GsonBuilder().setPrettyPrinting().create();
-    }
-
-    SimpleExplanation simpleExplanation = simpleEDismax(queryResponse);
-
-    StringBuilder jsonStr = new StringBuilder();
-    jsonStr.append("[\n");
-    boolean firstElement = true;
-    for (Map.Entry<String, DocumentMatch> entry : simpleExplanation.getDocumentMatches()) {
-      if (!firstElement) {
-        jsonStr.append(",\n");
-      }
-      firstElement = false;
-      jsonStr.append(gson.toJson(entry.getValue()));
-    }
-    jsonStr.append("\n]");
-    return jsonStr.toString();
+  public static SimpleExplanation simpleEDismax(SimpleOrderedMap<String> explainMap) {
+    return ExplainParser.parse(explainMap);
   }
 
+  public static String simpleEDismaxJson(QueryResponse queryResponse, boolean prettyPrint) {
+    SimpleExplanation simpleExplanation = simpleEDismax(queryResponse);
+    return simpleExplanation.toJson(prettyPrint);
+  }
 
+  public static String simpleEDismaxJson(SimpleOrderedMap<String> explainMap, boolean prettyPrint) {
+    SimpleExplanation simpleExplanation = simpleEDismax(explainMap);
+    return simpleExplanation.toJson(prettyPrint);
+  }
 }
