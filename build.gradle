@@ -1,5 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'jacoco'
+apply plugin: 'com.github.kt3k.coveralls'
 
 version = '0.1'
 
@@ -15,7 +17,14 @@ buildscript {
     }
     dependencies {
         classpath 'org.springframework.build.gradle:propdeps-plugin:0.0.7'
+        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.0.1'
     }
+}
+
+repositories {
+    // Restlet repository: necessary for Solr transitive dependencies
+    maven { url "http://maven.restlet.org" }
+    mavenCentral()
 }
 
 configure(allprojects) {
@@ -24,29 +33,15 @@ configure(allprojects) {
     apply plugin: 'propdeps-idea'
 }
 
-compileJava {
-    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
-}
-
-repositories {
-    maven { url "http://maven.restlet.org" }
-    mavenCentral()
-}
-
-task copyTestResources(type: Copy) {
-    from "${projectDir}/src/test/resources"
-    into "${buildDir}/classes/test"
-}
-processTestResources.dependsOn copyTestResources
-
 dependencies {
     compile('com.google.code.gson:gson:2.3.1')
-
     provided('org.slf4j:slf4j-api:1.7.10')
     provided('org.slf4j:slf4j-simple:1.7.10')
     provided('org.apache.logging.log4j:log4j-to-slf4j:2.1')
-
     provided('org.apache.solr:solr-test-framework:4.10.3') {
+        exclude(group: 'log4j', module: 'log4j')
+    }
+    provided('org.apache.lucene:lucene-test-framework:4.10.3') {
         exclude(group: 'log4j', module: 'log4j')
     }
     provided('org.apache.solr:solr-core:4.10.3') {
@@ -55,9 +50,29 @@ dependencies {
     provided('org.apache.solr:solr-solrj:4.10.3') {
         exclude(group: 'log4j', module: 'log4j')
     }
-
+    provided('org.apache.lucene:lucene-core:4.10.3')
     testCompile('commons-logging:commons-logging:1.1.1')
     testCompile('junit:junit:4.11')
     testCompile('org.assertj:assertj-core:1.7.1')
+}
 
+
+// Fix test classpath issues in IDEA
+task copyTestResources(type: Copy) {
+    from "${projectDir}/src/test/resources"
+    into "${buildDir}/classes/test"
+}
+processTestResources.dependsOn copyTestResources
+
+// Increase Java warn level
+compileJava {
+    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+}
+
+// Add jacoco coverage
+jacocoTestReport {
+    reports {
+        xml.enabled = true // coveralls plugin depends on xml format report
+        html.enabled = true
+    }
 }

@@ -63,7 +63,6 @@ public class SimpleSolrExplainTest extends SolrTestCaseJ4 {
 
     SimpleExplanation simpleExplanation = SimpleSolrExplain.simpleEDismax(response);
     assertEquals(4, simpleExplanation.getDocumentMatches().size());
-
     System.out.println(SimpleSolrExplain.simpleEDismaxJson(response, true));
   }
 

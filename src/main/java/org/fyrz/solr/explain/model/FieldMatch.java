@@ -5,13 +5,10 @@ import java.util.List;
 
 public class FieldMatch implements Comparable<FieldMatch> {
 
-  private Double score;
-
-  private String matchDescription;
-
-  private String similarityMethod;
-
   private final transient List<String> details = new ArrayList<>();
+  private Double score;
+  private String matchDescription;
+  private String similarityMethod;
 
   public void addDetail(final String detail) {
     details.add(detail);
@@ -65,18 +62,7 @@ public class FieldMatch implements Comparable<FieldMatch> {
 
     FieldMatch that = (FieldMatch) o;
 
-    if (matchDescription != null ? !matchDescription.equals(that.matchDescription)
-        : that.matchDescription != null) {
-      return false;
-    }
-    if (score != null ? !score.equals(that.score) : that.score != null) {
-      return false;
-    }
-    if (similarityMethod != null ? !similarityMethod.equals(that.similarityMethod)
-        : that.similarityMethod != null) {
-      return false;
-    }
-    return true;
+    return !(matchDescription != null ? !matchDescription.equals(that.matchDescription) : that.matchDescription != null) && !(score != null ? !score.equals(that.score) : that.score != null) && !(similarityMethod != null ? !similarityMethod.equals(that.similarityMethod) : that.similarityMethod != null);
   }
 
   @Override
