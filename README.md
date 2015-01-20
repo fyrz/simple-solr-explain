@@ -3,4 +3,4 @@
 todo...
 
 ### Status
-[![Build Status](https://travis-ci.org/fyrz/simple-solr-explain.png)](https://travis-ci.org/fyrz/simple-solr-explain) [![Coverage Status](https://coveralls.io/repos/fyrz/simple-solr-explain/badge.svg)](https://coveralls.io/r/fyrz/simple-solr-explain)
+[![Build Status](https://travis-ci.org/fyrz/simple-solr-explain.png)](https://travis-ci.org/fyrz/simple-solr-explain) [![Coverage Status](https://coveralls.io/repos/fyrz/simple-solr-explain/badge.svg?branch=master)](https://coveralls.io/r/fyrz/simple-solr-explain?branch=master)
