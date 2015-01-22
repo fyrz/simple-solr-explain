@@ -13,8 +13,9 @@ public class FieldMatchSequence extends ExplainElementSequence<FieldMatch> {
       ExplainElementType.NUMBER,
       ExplainElementType.ASSIGNMENT,
       ExplainElementType.MATCH,
-      ExplainElementType.WEIGHT,
-      ExplainElementType.SIMILARITY
+      ExplainElementType.FUNCTIONFIELD
+      // Similarity is optional for Wildcard-Matches
+      //ExplainElementType.SIMILARITY
   };
 
   private final ExplainElementType[] prohibitedElements = {
@@ -29,7 +30,11 @@ public class FieldMatchSequence extends ExplainElementSequence<FieldMatch> {
   public FieldMatch interprets(List<ExplainElement> explainElements, FieldMatch fieldMatch) {
     fieldMatch.setScore(Double.valueOf(explainElements.get(1).getData()));
     fieldMatch.setMatchDescription(explainElements.get(4).getData());
-    fieldMatch.setSimilarityMethod(explainElements.get(5).getData());
+
+    if (explainElements.size() >= 6 && explainElements.get(5).getType().equals(ExplainElementType.SIMILARITY)) {
+      fieldMatch.setSimilarityMethod(explainElements.get(5).getData());
+    }
+
     return fieldMatch;
   }
 }

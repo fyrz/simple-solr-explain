@@ -12,7 +12,7 @@ public enum ExplainElementType {
   // similarity method
   SIMILARITY("\\[.*\\]"),
   //weight(title:xyz^10.0 in 2)
-  WEIGHT("weight\\([a-z_A-Z]+:.+\\)"),
+  FUNCTIONFIELD("[a-zA-Z]+\\([a-z_A-Z]+:.+\\)"),
   // = idf(docFreq=3, maxDocs=4)
   IDF("idf\\(.*\\)"),
   // unknown tokens are matched with this

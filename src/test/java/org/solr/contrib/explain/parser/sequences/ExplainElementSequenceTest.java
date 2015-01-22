@@ -18,7 +18,7 @@ public class ExplainElementSequenceTest {
     };
 
     private final ExplainElementType[] prohibitedElements = {
-        ExplainElementType.WEIGHT
+        ExplainElementType.FUNCTIONFIELD
     };
 
     @Override
@@ -40,7 +40,7 @@ public class ExplainElementSequenceTest {
     // Sequence of explain elements describes a TestSequence
     assertThat(sequence.isDescribedBy(explainElements)).isTrue();
     // Add prohibited element to list
-    explainElements.add(new ExplainElement(ExplainElementType.WEIGHT, "weight"));
+    explainElements.add(new ExplainElement(ExplainElementType.FUNCTIONFIELD, "weight"));
     // Sequence describes no instance of TestSequence
     assertThat(sequence.isDescribedBy(explainElements)).isFalse();
   }

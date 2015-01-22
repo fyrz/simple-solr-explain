@@ -15,7 +15,7 @@ public class DocumentMatchSequence extends ExplainElementSequence<DocumentMatch>
   };
 
   private final ExplainElementType[] prohibitedElements = {
-      ExplainElementType.WEIGHT
+      ExplainElementType.FUNCTIONFIELD
   };
 
   @Override

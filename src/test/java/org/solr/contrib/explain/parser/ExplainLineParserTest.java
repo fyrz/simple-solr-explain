@@ -24,7 +24,7 @@ public class ExplainLineParserTest {
     assertThat(explainLineParser.parseSingleLine(inLine))
         .extracting("type")
         .extracting("name")
-        .contains("INDENT", "NUMBER", "MATCH", "WEIGHT", "SIMILARITY")
+        .contains("INDENT", "NUMBER", "MATCH", "FUNCTIONFIELD", "SIMILARITY")
         .doesNotContain("IDF");
   }
 
@@ -35,6 +35,6 @@ public class ExplainLineParserTest {
         .extracting("type")
         .extracting("name")
         .contains("INDENT", "NUMBER", "ASSIGNMENT", "IDF")
-        .doesNotContain("MATCH", "WEIGHT");
+        .doesNotContain("MATCH", "FUNCTIONFIELD");
   }
 }
