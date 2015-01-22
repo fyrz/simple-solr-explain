@@ -1,11 +1,5 @@
 package org.solr.contrib.plugin.response;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.List;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -23,7 +17,11 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.List;
 
 
 @SolrTestCaseJ4.SuppressSSL
@@ -69,14 +67,14 @@ public class SimpleExplainJsonResponseWriterTest extends SolrJettyTestBase {
     server.add(document);
 
     server.commit();
-    String response = retrieveHttpResult("xyz");
+    retrieveHttpResult("xyz");
   }
 
   private String retrieveHttpResult(String query)
       throws IOException {
     StringBuilder responseContent = new StringBuilder();
 
-    List<NameValuePair> params = new LinkedList<NameValuePair>();
+    List<NameValuePair> params = new LinkedList<>();
     params.add(new BasicNameValuePair("q", query));
     params.add(new BasicNameValuePair("debugQuery", "true"));
     params.add(new BasicNameValuePair("wt", "simpleExplainJson"));
@@ -90,7 +88,7 @@ public class SimpleExplainJsonResponseWriterTest extends SolrJettyTestBase {
     BufferedReader rd = new BufferedReader
         (new InputStreamReader(response.getEntity().getContent()));
 
-    String line = "";
+    String line;
     while ((line = rd.readLine()) != null) {
       responseContent.append(line);
     }

@@ -49,7 +49,7 @@ public class DocumentMatch {
   /**
    * Add a FieldMatch.
    *
-   * @param fieldMatch instance of {@link org.solr.solr.explain.model.FieldMatch}.
+   * @param fieldMatch instance of {@link org.solr.contrib.explain.model.FieldMatch}.
    */
   public void addFieldMatch(final FieldMatch fieldMatch) {
     fieldMatches.add(fieldMatch);

@@ -31,7 +31,7 @@ public class FieldMatchTest {
   public void equals() {
     FieldMatch fieldMatch = new FieldMatch();
     assertThat(fieldMatch.equals(fieldMatch)).isTrue();
-    assertThat(fieldMatch.equals(null)).isFalse();
+    assertThat(fieldMatch).isNotNull();
     // same score will be equal
     fieldMatch.setScore(2.5d);
     FieldMatch otherMatch = new FieldMatch();

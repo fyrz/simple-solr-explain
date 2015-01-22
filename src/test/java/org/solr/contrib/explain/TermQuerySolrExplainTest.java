@@ -30,6 +30,7 @@ public class TermQuerySolrExplainTest extends AbstractSolrExplainTest {
 
     SimpleExplanation simpleExplanation = SimpleSolrExplain.simpleEDismax(response);
     assertEquals(2, simpleExplanation.getDocumentMatches().size());
+    assertNotNull(SimpleSolrExplain.simpleEDismaxJson(response, true));
   }
 
   @Test

@@ -7,7 +7,7 @@ import com.google.gson.GsonBuilder;
 
 
 public class SimpleExplanation {
-  SortedSet<Map.Entry<String, DocumentMatch>> documentMatches = new TreeSet<Map.Entry<String, DocumentMatch>>(
+  SortedSet<Map.Entry<String, DocumentMatch>> documentMatches = new TreeSet<>(
       new Comparator<Map.Entry<String, DocumentMatch>>() {
         @Override
         public int compare(Map.Entry<String, DocumentMatch> e1,
@@ -18,7 +18,7 @@ public class SimpleExplanation {
 
 
   public void addDocumentMatch(final String documentId, final DocumentMatch documentMatch) {
-    Map.Entry<String, DocumentMatch> entry = new AbstractMap.SimpleEntry<String, DocumentMatch>(
+    Map.Entry<String, DocumentMatch> entry = new AbstractMap.SimpleEntry<>(
         documentId, documentMatch);
     documentMatches.add(entry);
   }
