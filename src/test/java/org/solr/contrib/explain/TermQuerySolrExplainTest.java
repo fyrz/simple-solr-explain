@@ -18,7 +18,6 @@ public class TermQuerySolrExplainTest extends AbstractSolrExplainTest {
 
     SimpleExplanation simpleExplanation = SimpleSolrExplain.simpleEDismax(response);
     assertEquals(1, simpleExplanation.getDocumentMatches().size());
-    System.out.println(SimpleSolrExplain.simpleEDismaxJson(response, true));
   }
 
   @Test
@@ -31,7 +30,6 @@ public class TermQuerySolrExplainTest extends AbstractSolrExplainTest {
 
     SimpleExplanation simpleExplanation = SimpleSolrExplain.simpleEDismax(response);
     assertEquals(2, simpleExplanation.getDocumentMatches().size());
-    System.out.println(SimpleSolrExplain.simpleEDismaxJson(response, true));
   }
 
   @Test
@@ -44,6 +42,5 @@ public class TermQuerySolrExplainTest extends AbstractSolrExplainTest {
 
     SimpleExplanation simpleExplanation = SimpleSolrExplain.simpleEDismax(response);
     assertEquals(2, simpleExplanation.getDocumentMatches().size());
-    System.out.println(SimpleSolrExplain.simpleEDismaxJson(response, true));
   }
 }

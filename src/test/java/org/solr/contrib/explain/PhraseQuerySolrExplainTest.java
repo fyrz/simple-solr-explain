@@ -9,7 +9,7 @@ import org.solr.contrib.explain.model.SimpleExplanation;
 public class PhraseQuerySolrExplainTest extends AbstractSolrExplainTest {
 
   @Test
-  public void phraseQuery() throws SolrServerException {
+     public void phraseQuery() throws SolrServerException {
     SolrQuery query = new SolrQuery("\"quick brown\"");
     query.setShowDebugInfo(true);
 
@@ -18,6 +18,5 @@ public class PhraseQuerySolrExplainTest extends AbstractSolrExplainTest {
 
     SimpleExplanation simpleExplanation = SimpleSolrExplain.simpleEDismax(response);
     assertEquals(1, simpleExplanation.getDocumentMatches().size());
-    System.out.println(SimpleSolrExplain.simpleEDismaxJson(response, true));
   }
 }
