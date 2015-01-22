@@ -1,8 +1,8 @@
 package org.solr.contrib.explain.parser.sequences;
 
+import org.junit.Test;
 import org.solr.contrib.explain.parser.ExplainLineParser;
 import org.solr.contrib.explain.parser.types.ExplainElement;
-import org.junit.Test;
 
 import java.util.List;
 

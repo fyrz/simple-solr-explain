@@ -1,1 +1,2 @@
-synonym => xyz
+synonym => bird
+othersynonym => bird, battle

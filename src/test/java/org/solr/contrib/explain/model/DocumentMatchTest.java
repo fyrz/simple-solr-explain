@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class DocumentMatchTest {
 
   @Test
-  public void documentId(){
+  public void documentId() {
     DocumentMatch documentMatch = new DocumentMatch("123");
     assertThat(documentMatch.getDocumentId()).isEqualTo("123");
   }
