@@ -6,4 +6,7 @@
 
 This project aims to provide Solr query explanations to a broader audience. In former and current projects as well as by experience debug information available via standard Solr facilities are too detailed and too technical to be easily understandable.
 
+## Usage
+
+Simple solr explanations can be integrated as Solr QueryResponseParserPlugin or as standalone library.
 
