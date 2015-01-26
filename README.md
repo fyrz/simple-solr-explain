@@ -9,7 +9,7 @@ This project aims to provide Solr query explanations to a broader audience. In f
 - The state of this project can be considered as prototype.
 
 ## Usage
-Simple-solr-explain can be configured as custom query response writer (see: https://github.com/fyrz/simple-solr-explain/blob/master/src/test/resources/solr/collection1/conf/solrconfig.xml#L588). Alternatively the API can be called from Java.
+Simple-solr-explain can be configured as custom QueryResponseWriter (see: https://github.com/fyrz/simple-solr-explain/blob/master/src/test/resources/solr/collection1/conf/solrconfig.xml#L588). Alternatively the API can be called from Java.
 
 ## Sample
 The following output describes a JSON response of simple-solr-explain. The JSON response includes all fields searched in and every document match including field hits.
