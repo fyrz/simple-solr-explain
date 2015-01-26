@@ -5,7 +5,8 @@
 This project aims to provide Solr query explanations to a broader audience. In former and current projects as well as by experience debug information available via standard Solr facilities are too detailed and too technical to be easily understandable.
 
 ## Limitations
-Currently this is only working and tested for explain output produced by EDismaxQParser.
+- Currently this is only working and tested for explain output produced by EDismaxQParser.
+- The state of this project can be considered as prototype.
 
 ## Usage
 Simple solr explanations can be integrated by configuring it as a custom Solr QueryResponseParserPlugin or by using standalone with API calls.
