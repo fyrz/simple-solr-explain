@@ -8,5 +8,5 @@ This project aims to provide Solr query explanations to a broader audience. In f
 
 ## Usage
 
-Simple solr explanations can be integrated as Solr QueryResponseParserPlugin or as standalone library.
+Simple solr explanations can be integrated by configuring it as a custom Solr QueryResponseParserPlugin or by using standalone with API calls.
 
