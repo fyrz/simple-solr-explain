@@ -22,28 +22,24 @@ The following output describes a JSON response of simple-solr-explain. The JSON 
   "documentMatches": [
     {
       "documentId": "1",
-      "score": 0.4868159,
+      "score": 0.95330393,
       "fieldMatches": [
         {
-          "score": 0.47311547,
+          "score": 0.94419,
           "matchDescription": "title:quick^10.0"
         },
         {
-          "score": 0.009133612,
-          "matchDescription": "description:brown^0.2"
-        },
-        {
-          "score": 0.009133612,
+          "score": 0.018227823,
           "matchDescription": "description:quick^0.2"
         }
       ]
     },
     {
       "documentId": "4",
-      "score": 0.1892462,
+      "score": 0.755352,
       "fieldMatches": [
         {
-          "score": 0.3784924,
+          "score": 0.755352,
           "matchDescription": "title:quick^10.0"
         }
       ]
