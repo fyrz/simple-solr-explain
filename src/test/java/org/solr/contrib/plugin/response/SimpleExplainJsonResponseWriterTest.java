@@ -32,7 +32,10 @@ public class SimpleExplainJsonResponseWriterTest extends SolrJettyTestBase {
   @BeforeClass
   public static void beforeTest() throws Exception {
     String path = SimpleExplainJsonResponseWriterTest.class.getResource("/").getPath();
-    jettySolrRunner = createJetty(path + "solr", "/collection1/conf/solrconfig.xml", "/collection1/conf/schema.xml", null, true, null);
+    jettySolrRunner = createJetty(
+        path + "solr", "/collection1/conf/solrconfig.xml",
+        "/collection1/conf/schema.xml",
+        null, true, null);
   }
 
   @Before
@@ -43,31 +46,24 @@ public class SimpleExplainJsonResponseWriterTest extends SolrJettyTestBase {
   @Test
   public void testResponseWriter()
       throws IOException, SolrServerException {
-    SolrInputDocument document = new SolrInputDocument();
-    document.addField("id", 1);
-    document.addField("title", "xyz");
-    server.add(document);
+    setupTestBase();
+    retrieveHttpResult("fox");
+  }
 
-    document = new SolrInputDocument();
-    document.addField("id", 2);
-    document.addField("title", "something else");
-    document.addField("description", "xyz");
-    server.add(document);
+  private void setupTestBase() throws IOException, SolrServerException {
+    writeSolrInputDocumentToIndex("1", "Quick Fox", "The quick brown fox jumped the fence.");
+    writeSolrInputDocumentToIndex("2", "Slow Bear", "The slow bear went to grab some fish.");
+    writeSolrInputDocumentToIndex("3", "Early bird", "A early bird catches everything before the late one.");
+    writeSolrInputDocumentToIndex("4", "Early quick eagle", "The Old English The Battle of Maldon refers to the Earn or Sea Eagle as a carrion eater in 10th century Essex.");
+    writeSolrInputDocumentToIndex("5", "Hungry rabbit", "They came across a bunny rabbit who looked hungry.");
+  }
 
-    document = new SolrInputDocument();
-    document.addField("id", 3);
-    document.addField("title", "something else xyz");
-    document.addField("description", "xyz xyz");
-    server.add(document);
-
-    document = new SolrInputDocument();
-    document.addField("id", 4);
-    document.addField("title", "something else xyz");
-    document.addField("description", "xyz synonym xyz");
-    server.add(document);
-
-    server.commit();
-    retrieveHttpResult("xyz");
+  private void writeSolrInputDocumentToIndex(final String id, final String title, final String description) throws IOException, SolrServerException {
+    SolrInputDocument inputDocument = new SolrInputDocument();
+    inputDocument.addField("id", id);
+    inputDocument.addField("title", title);
+    inputDocument.addField("description", description);
+    server.add(inputDocument);
   }
 
   private String retrieveHttpResult(String query)
