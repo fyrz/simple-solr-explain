@@ -9,7 +9,7 @@ This project aims to provide Solr query explanations to a broader audience. In f
 - The state of this project can be considered as prototype.
 
 ## Usage
-Simple solr explanations can be integrated by configuring it as a custom Solr QueryResponseParserPlugin or by using standalone with API calls.
+Simple-solr-explain can be configured as custom query response writer. Alternatively the API can be called from Java.
 
 ## Sample
 The following output describes a JSON response of simple-solr-explain. The JSON response includes all fields searched in and every document match including field hits.
