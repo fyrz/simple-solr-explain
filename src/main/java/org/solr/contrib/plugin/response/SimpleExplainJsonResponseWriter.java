@@ -12,7 +12,9 @@ import org.solr.contrib.explain.SimpleSolrExplain;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
+/**
+ * Custom QueryResponseWriter SimpleExplainJsonResponseWriter.
+ */
 public class SimpleExplainJsonResponseWriter extends JSONResponseWriter {
   protected static Logger log = LoggerFactory.getLogger(SimpleExplainJsonResponseWriter.class);
 
@@ -24,10 +26,13 @@ public class SimpleExplainJsonResponseWriter extends JSONResponseWriter {
       SimpleOrderedMap debugMap = (SimpleOrderedMap) namedList.get("debug");
       if (debugMap != null) {
         @SuppressWarnings("unchecked")
+        final String parsedQuery = (String) debugMap.get("parsedquery");
+        @SuppressWarnings("unchecked")
         SimpleOrderedMap<String> explainMap = (SimpleOrderedMap<String>) debugMap.get("explain");
-        rsp.add("simpleExplain", SimpleSolrExplain.simpleEDismaxJson(explainMap, true));
+        rsp.add("simpleExplain", SimpleSolrExplain.simpleEDismaxJson(parsedQuery, explainMap, true));
       }
     } catch (ClassCastException e) {
+      // ignored.
     }
     super.write(writer, req, rsp);
   }

@@ -12,9 +12,6 @@ public class DocumentMatch {
 
   private Double score = -1d;
 
-  // By default the tie breaker is set to zero
-  private Double tieBreaker = 0d;
-
   private final List<FieldMatch> fieldMatches = new ArrayList<>();
 
   /**
@@ -50,24 +47,6 @@ public class DocumentMatch {
    */
   public void setScore(Double score) {
     this.score = score;
-  }
-
-  /**
-   * Return tie breaker value.
-   *
-   * @return tieBreaker value.
-   */
-  public Double getTieBreaker() {
-    return tieBreaker;
-  }
-
-  /**
-   * Set tie breaker.
-   *
-   * @param tieBreaker double value.
-   */
-  public void setTieBreaker(Double tieBreaker) {
-    this.tieBreaker = tieBreaker;
   }
 
   /**

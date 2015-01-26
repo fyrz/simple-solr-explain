@@ -7,9 +7,9 @@ import org.solr.contrib.explain.parser.ExplainParser;
 
 import java.util.Map;
 
-public class SimpleSolrExplain {
+public final class SimpleSolrExplain {
 
-  public static SimpleExplanation simpleEDismax(QueryResponse queryResponse) {
+  public static SimpleExplanation simpleEDismax(final QueryResponse queryResponse) {
     // Validate if query debugging is enabled
     Map<String, Object> debugMap = queryResponse.getDebugMap();
     if (debugMap == null || debugMap.isEmpty()) {
@@ -22,21 +22,23 @@ public class SimpleSolrExplain {
       throw new IllegalArgumentException("Processing is limited to process debug output of ExtendedDismaxQParser.");
     }
     @SuppressWarnings("unchecked")
-    SimpleExplanation simpleExplanation = ExplainParser.parse((SimpleOrderedMap<String>) debugMap.get("explain"));
+    SimpleExplanation simpleExplanation = ExplainParser.parse(
+        (String)debugMap.get("parsedquery"),
+        (SimpleOrderedMap<String>) debugMap.get("explain"));
     return simpleExplanation;
   }
 
-  public static SimpleExplanation simpleEDismax(SimpleOrderedMap<String> explainMap) {
-    return ExplainParser.parse(explainMap);
+  public static SimpleExplanation simpleEDismax(final String parsedQuery, final SimpleOrderedMap<String> explainMap) {
+    return ExplainParser.parse(parsedQuery, explainMap);
   }
 
-  public static String simpleEDismaxJson(QueryResponse queryResponse, boolean prettyPrint) {
+  public static String simpleEDismaxJson(final QueryResponse queryResponse, final boolean prettyPrint) {
     SimpleExplanation simpleExplanation = simpleEDismax(queryResponse);
     return simpleExplanation.toJson(prettyPrint);
   }
 
-  public static String simpleEDismaxJson(SimpleOrderedMap<String> explainMap, boolean prettyPrint) {
-    SimpleExplanation simpleExplanation = simpleEDismax(explainMap);
+  public static String simpleEDismaxJson(final String parsedQuery, final SimpleOrderedMap<String> explainMap, final boolean prettyPrint) {
+    SimpleExplanation simpleExplanation = simpleEDismax(parsedQuery, explainMap);
     return simpleExplanation.toJson(prettyPrint);
   }
 }

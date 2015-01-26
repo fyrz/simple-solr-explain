@@ -4,6 +4,8 @@ import java.util.*;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 
 /**
  * SimpleExplanation of a Solr Explain String.
@@ -23,6 +25,23 @@ public class SimpleExplanation {
         }
       });
 
+  /**
+   * Return List of search fields as String.
+   *
+   * @return List of search fields.
+   */
+  public List<String> getSearchFields() {
+    return searchFields;
+  }
+
+  /**
+   * Set list of search fields.
+   *
+   * @param searchFields List of search field Strings.
+   */
+  public void setSearchFields(List<String> searchFields) {
+    this.searchFields = searchFields;
+  }
 
   /**
    * Add a new document match to the SimpleExplanation instance.
@@ -54,14 +73,11 @@ public class SimpleExplanation {
    */
   public String toJson(boolean prettyPrint) {
     Gson gson = new GsonBuilder().create();
-    if (prettyPrint) {
-      gson = new GsonBuilder().setPrettyPrinting().create();
-    }
     StringBuilder jsonStr = new StringBuilder();
 
     jsonStr.append("{\"searchFields\":");
     jsonStr.append(gson.toJson(searchFields));
-    jsonStr.append("[");
+    jsonStr.append(",\"documentMatches\":[");
     boolean firstElement = true;
     for (Map.Entry<String, DocumentMatch> entry : getDocumentMatches()) {
       if (!firstElement) {
@@ -72,6 +88,15 @@ public class SimpleExplanation {
     }
     jsonStr.append("]");
     jsonStr.append("}");
-    return jsonStr.toString();
+
+    String retValue = jsonStr.toString();
+
+    if (prettyPrint) {
+      gson = new GsonBuilder().setPrettyPrinting().create();
+      JsonParser jsonParser = new JsonParser();
+      JsonElement jsonElement = jsonParser.parse(retValue);
+      retValue = gson.toJson(jsonElement);
+    }
+    return retValue;
   }
 }

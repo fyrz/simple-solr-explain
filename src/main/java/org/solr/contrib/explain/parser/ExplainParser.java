@@ -22,18 +22,25 @@ public class ExplainParser {
   private static FieldMatchSequence fieldMatchSequence = new FieldMatchSequence();
 
   /**
-   * Parse explain string to SimpleExplanation structure.
+   * Parse parsedQuery & explain string to SimpleExplanation structure.
    *
+   * @param parsedQuery Solr parsedQueryString
    * @param explainMap Solr SimpleOrderedMap.
+   *
    * @return SimpleExplanation instance.
    */
-  public static SimpleExplanation parse(final SimpleOrderedMap<String> explainMap) {
+  public static SimpleExplanation parse(final String parsedQuery, final SimpleOrderedMap<String> explainMap) {
     // Result object
     final SimpleExplanation simpleExplanation = new SimpleExplanation();
     // State variables
     boolean documentOpen = false;
     DocumentMatch documentMatch = null;
     FieldMatch fieldMatch = null;
+
+    // Process parsedQuery String
+    simpleExplanation.setSearchFields(
+        ParsedQueryParser.parseQuery(parsedQuery));
+
     // Process explain string line by line
     for (final Map.Entry<String, String> entry : explainMap) {
       String[] lines = entry.getValue().split("\n");

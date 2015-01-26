@@ -27,13 +27,6 @@ public class DocumentMatchSequence extends ExplainElementSequence<DocumentMatch>
   public DocumentMatch interprets(List<ExplainElement> explainElements, DocumentMatch documentMatch) {
     Double documentScore = Double.valueOf(explainElements.get(0).getData());
     documentMatch.setScore(documentScore);
-
-    // check for max plus tie breaker
-    if (explainElements.size() > 5 &&
-        explainElements.get(3).getType().equals(ExplainElementType.MAXPLUS) &&
-        explainElements.get(4).getType().equals(ExplainElementType.NUMBER)) {
-      documentMatch.setTieBreaker(Double.valueOf(explainElements.get(4).getData()));
-    }
     return documentMatch;
   }
 }

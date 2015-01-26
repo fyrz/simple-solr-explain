@@ -5,10 +5,13 @@ import java.util.List;
 
 public class FieldMatch implements Comparable<FieldMatch> {
 
+  // details shall not be serialized
   private final transient List<String> details = new ArrayList<>();
   private Double score;
   private String matchDescription;
-  private String similarityMethod;
+
+  // similarity method shall not be serialized
+  private transient String similarityMethod;
 
   public void addDetail(final String detail) {
     details.add(detail);

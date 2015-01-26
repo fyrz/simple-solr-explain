@@ -27,12 +27,4 @@ public class DocumentMatchTest {
     documentMatch.setScore(2.0);
     assertThat(documentMatch.getScore()).isEqualTo(2.0);
   }
-
-  @Test
-  public void tieBreaker() {
-    DocumentMatch documentMatch = new DocumentMatch("126");
-    assertThat(documentMatch.getTieBreaker()).isEqualTo(0);
-    documentMatch.setTieBreaker(1.5);
-    assertThat(documentMatch.getTieBreaker()).isEqualTo(1.5);
-  }
 }
