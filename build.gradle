@@ -5,7 +5,7 @@ apply plugin: 'com.github.kt3k.coveralls'
 
 // Definition of dependency versions
 ext {
-    solrVersion = '4.10.3'
+    solrVersion = '5.0.0'
     gsonVersion = '2.3.1'
     slf4jVersion = '1.7.10'
     log4jtoslf4jVersion = '2.1'

@@ -9,7 +9,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.solr.SolrJettyTestBase;
 import org.apache.solr.SolrTestCaseJ4;
-import org.apache.solr.client.solrj.SolrServer;
+import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.embedded.JettySolrRunner;
 import org.apache.solr.common.SolrInputDocument;
@@ -20,6 +20,8 @@ import org.junit.Test;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URL;
+import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -27,20 +29,21 @@ import java.util.List;
 @SolrTestCaseJ4.SuppressSSL
 public class SimpleExplainJsonResponseWriterTest extends SolrJettyTestBase {
   private static JettySolrRunner jettySolrRunner;
-  private SolrServer server;
+  private SolrClient solrClient;
 
   @BeforeClass
   public static void beforeTest() throws Exception {
-    String path = SimpleExplainJsonResponseWriterTest.class.getResource("/").getPath();
+    URL url = SimpleExplainJsonResponseWriterTest.class.getResource("/solr");
+    String path = Paths.get(url.toURI()).normalize().toString();
     jettySolrRunner = createJetty(
-        path + "solr", "/collection1/conf/solrconfig.xml",
-        "/collection1/conf/schema.xml",
+        path, "colection1/conf/solrconfig.xml",
+        "collection1/conf/schema.xml",
         null, true, null);
   }
 
   @Before
   public void initTest() {
-    server = createNewSolrServer();
+    solrClient = createNewSolrClient();
   }
 
   @Test
@@ -63,7 +66,7 @@ public class SimpleExplainJsonResponseWriterTest extends SolrJettyTestBase {
     inputDocument.addField("id", id);
     inputDocument.addField("title", title);
     inputDocument.addField("description", description);
-    server.add(inputDocument);
+    solrClient.add(inputDocument);
   }
 
   private String retrieveHttpResult(String query)
