@@ -3,6 +3,17 @@ apply plugin: 'idea'
 apply plugin: 'jacoco'
 apply plugin: 'com.github.kt3k.coveralls'
 
+// Definition of dependency versions
+ext {
+    solrVersion = '4.10.3'
+    gsonVersion = '2.3.1'
+    slf4jVersion = '1.7.10'
+    log4jtoslf4jVersion = '2.1'
+    commonsloggingVersion = '1.1.1'
+    junitVersion = '4.11'
+    assertjVersion = '1.7.1'
+}
+
 version = '0.1'
 
 idea {
@@ -34,23 +45,23 @@ configure(allprojects) {
 }
 
 dependencies {
-    compile('com.google.code.gson:gson:2.3.1')
-    provided('org.slf4j:slf4j-api:1.7.10')
-    provided('org.slf4j:slf4j-simple:1.7.10')
-    provided('org.apache.logging.log4j:log4j-to-slf4j:2.1')
-    provided('org.apache.solr:solr-test-framework:4.10.3') {
+    compile("com.google.code.gson:gson:$gsonVersion")
+    provided("org.slf4j:slf4j-api:$slf4jVersion")
+    provided("org.slf4j:slf4j-simple:$slf4jVersion")
+    provided("org.apache.logging.log4j:log4j-to-slf4j:$log4jtoslf4jVersion")
+    provided("org.apache.solr:solr-test-framework:$solrVersion") {
         exclude(group: 'log4j', module: 'log4j')
     }
-    provided('org.apache.solr:solr-core:4.10.3') {
-        exclude(group: 'log4j', module: 'log4j')
+    provided("org.apache.solr:solr-core:$solrVersion") {
+        exclude(group: "log4j", module: "log4j")
     }
-    provided('org.apache.solr:solr-solrj:4.10.3') {
-        exclude(group: 'log4j', module: 'log4j')
+    provided("org.apache.solr:solr-solrj:$solrVersion") {
+        exclude(group: "log4j", module: "log4j")
     }
-    //provided('org.apache.lucene:lucene-core:4.10.3')
-    testCompile('commons-logging:commons-logging:1.1.1')
-    testCompile('junit:junit:4.11')
-    testCompile('org.assertj:assertj-core:1.7.1')
+
+    testCompile("commons-logging:commons-logging:$commonsloggingVersion")
+    testCompile("junit:junit:$junitVersion")
+    testCompile("org.assertj:assertj-core:$assertjVersion")
 }
 
 
