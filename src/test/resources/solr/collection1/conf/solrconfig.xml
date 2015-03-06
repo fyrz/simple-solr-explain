@@ -578,8 +578,8 @@
     <!--
        Custom response writers can be declared as needed...
       -->
-    <queryResponseWriter name="simpleExplainJson" class="org.solr.contrib.plugin.response.SimpleExplainJsonResponseWriter"
-                         startup="lazy"/>
+    <queryResponseWriter name="simpleExplainJson"
+                         class="org.solr.contrib.plugin.response.SimpleExplainJsonResponseWriter"/>
 
     <!-- Legacy config for the admin interface -->
     <admin>

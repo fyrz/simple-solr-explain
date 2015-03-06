@@ -36,8 +36,8 @@ public class SimpleExplainJsonResponseWriterTest extends SolrJettyTestBase {
     URL url = SimpleExplainJsonResponseWriterTest.class.getResource("/solr");
     String path = Paths.get(url.toURI()).normalize().toString();
     jettySolrRunner = createJetty(
-        path, "colection1/conf/solrconfig.xml",
-        "collection1/conf/schema.xml",
+        path, "conf/solrconfig.xml",
+        "conf/schema.xml",
         null, true, null);
   }
 
@@ -81,7 +81,7 @@ public class SimpleExplainJsonResponseWriterTest extends SolrJettyTestBase {
 
     HttpClient client = HttpClientBuilder.create().build();
 
-    HttpGet request = new HttpGet(jettySolrRunner.getBaseUrl() + "/select?" + paramString);
+    HttpGet request = new HttpGet(jettySolrRunner.getBaseUrl() + "/collection1/select?" + paramString);
     HttpResponse response = client.execute(request);
 
     BufferedReader rd = new BufferedReader
