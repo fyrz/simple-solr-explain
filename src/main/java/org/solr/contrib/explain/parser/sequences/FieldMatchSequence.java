@@ -15,7 +15,7 @@ public class FieldMatchSequence extends ExplainElementSequence<FieldMatch> {
       ExplainElementType.INDENT,
       ExplainElementType.NUMBER,
       ExplainElementType.ASSIGNMENT,
-      ExplainElementType.MATCH,
+      //ExplainElementType.MATCH,
       ExplainElementType.FUNCTIONFIELD
       // Similarity is optional for Wildcard-Matches
       //ExplainElementType.SIMILARITY
@@ -33,10 +33,10 @@ public class FieldMatchSequence extends ExplainElementSequence<FieldMatch> {
   public FieldMatch interprets(List<ExplainElement> explainElements, FieldMatch fieldMatch) {
     fieldMatch.setScore(Double.valueOf(explainElements.get(1).getData()));
     fieldMatch.setMatchDescription(
-        FieldMatchDescriptionParser.parseMatchDescription(explainElements.get(4).getData()));
+        FieldMatchDescriptionParser.parseMatchDescription(explainElements.get(3).getData()));
 
-    if (explainElements.size() >= 6 && explainElements.get(5).getType().equals(ExplainElementType.SIMILARITY)) {
-      fieldMatch.setSimilarityMethod(explainElements.get(5).getData());
+    if (explainElements.size() >= 5 && explainElements.get(4).getType().equals(ExplainElementType.SIMILARITY)) {
+      fieldMatch.setSimilarityMethod(explainElements.get(4).getData());
     }
 
     return fieldMatch;
@@ -54,7 +54,7 @@ public class FieldMatchSequence extends ExplainElementSequence<FieldMatch> {
      * @return simple field match description if found, else original
      *     String.
      */
-    public static String parseMatchDescription(final String matchDescription) {
+    static String parseMatchDescription(final String matchDescription) {
       Matcher matcher = pattern.matcher(matchDescription);
       if (matcher.find()) {
         return matcher.group(1).trim();

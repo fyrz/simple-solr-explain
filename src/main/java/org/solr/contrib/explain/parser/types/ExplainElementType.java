@@ -8,7 +8,8 @@ public enum ExplainElementType {
   // assignment operator
   ASSIGNMENT("="),
   // matches are denoted using this literal
-  MATCH("\\(MATCH\\)"),
+  //MATCH("\\(MATCH\\)"),
+  MATCH("(([m][a][x])|([s][u][m]) of:)|(\\*:\\*)"),
   // similarity method
   SIMILARITY("\\[.*\\]"),
   //weight(title:xyz^10.0 in 2)
@@ -24,7 +25,7 @@ public enum ExplainElementType {
 
   private final String pattern;
 
-  private ExplainElementType(String pattern) {
+  ExplainElementType(String pattern) {
     this.pattern = pattern;
   }
 

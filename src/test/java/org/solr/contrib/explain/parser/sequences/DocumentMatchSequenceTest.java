@@ -14,13 +14,13 @@ public class DocumentMatchSequenceTest {
 
   @Test
   public void isDescribedBy() {
-    final String inLine = "0.5088134 = (MATCH) max plus 0.5 times others of:";
+    final String inLine = "0.5088134 = max of:";
     List<ExplainElement> explainElements = explainLineParser.parseSingleLine(inLine);
 
     DocumentMatchSequence documentMatchSequence = new DocumentMatchSequence();
     assertThat(documentMatchSequence.isDescribedBy(explainElements)).isTrue();
 
-    final String invalidLine = " 0.49997503 = (MATCH) weight(title:xyz^10.0 in 2) [DefaultSimilarity], result of:";
+    final String invalidLine = " 0.49997503 = weight(title:xyz^10.0 in 2) [DefaultSimilarity], result of:";
     explainElements = explainLineParser.parseSingleLine(invalidLine);
     assertThat(documentMatchSequence.isDescribedBy(explainElements)).isFalse();
   }

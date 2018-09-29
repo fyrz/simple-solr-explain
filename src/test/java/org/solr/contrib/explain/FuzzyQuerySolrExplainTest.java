@@ -1,5 +1,7 @@
 package org.solr.contrib.explain;
 
+import java.io.IOException;
+
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.QueryResponse;
@@ -8,7 +10,7 @@ import org.solr.contrib.explain.model.SimpleExplanation;
 
 public class FuzzyQuerySolrExplainTest extends AbstractSolrExplainTest {
   @Test
-  public void fuzzyQuery() throws SolrServerException {
+  public void fuzzyQuery() throws SolrServerException, IOException {
     SolrQuery query = new SolrQuery("early~0.5");
     query.setShowDebugInfo(true);
 

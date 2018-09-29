@@ -10,21 +10,21 @@ public class ExplainLineParserTest {
 
   @Test
   public void parseDocumentMatchLine() {
-    final String inLine = "0.5088134 = (MATCH) max plus 0.5 times others of:";
+    final String inLine = "0.5088134 = max of:";
     assertThat(explainLineParser.parseSingleLine(inLine))
         .extracting("type")
         .extracting("name")
-        .contains("NUMBER", "MATCH", "MAXPLUS")
+        .contains("NUMBER", "MATCH")
         .doesNotContain("IDF", "ID", "INDENT");
   }
 
   @Test
   public void parseFieldMatchLine() {
-    final String inLine = " 0.49997503 = (MATCH) weight(title:xyz^10.0 in 2) [DefaultSimilarity], result of:";
+    final String inLine = " 0.49997503 = weight(title:xyz^10.0 in 2) [DefaultSimilarity], result of:";
     assertThat(explainLineParser.parseSingleLine(inLine))
         .extracting("type")
         .extracting("name")
-        .contains("INDENT", "NUMBER", "MATCH", "FUNCTIONFIELD", "SIMILARITY")
+        .contains("INDENT", "NUMBER", "FUNCTIONFIELD", "SIMILARITY")
         .doesNotContain("IDF");
   }
 

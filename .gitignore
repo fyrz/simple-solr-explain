@@ -2,3 +2,9 @@
 *.iml
 build
 .gradle
+bin
+.classpath
+.project
+.settings
+.vscode
+.DS_Store

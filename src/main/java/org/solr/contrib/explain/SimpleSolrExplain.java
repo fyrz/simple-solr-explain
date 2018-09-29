@@ -9,7 +9,7 @@ import java.util.Map;
 
 public final class SimpleSolrExplain {
 
-  public static SimpleExplanation simpleEDismax(final QueryResponse queryResponse) {
+  static SimpleExplanation simpleEDismax(final QueryResponse queryResponse) {
     // Validate if query debugging is enabled
     Map<String, Object> debugMap = queryResponse.getDebugMap();
     if (debugMap == null || debugMap.isEmpty()) {
@@ -19,7 +19,7 @@ public final class SimpleSolrExplain {
     // Check if EDismax parser was used.
     String queryParser = (String) debugMap.get("QParser");
     if (queryParser == null || !queryParser.equals("ExtendedDismaxQParser")) {
-      throw new IllegalArgumentException("Processing is limited to process debug output of ExtendedDismaxQParser.");
+      throw new IllegalArgumentException("Processing is limited to process debug output of ExtendedDismaxQParser. QParser was:"+queryParser);
     }
     @SuppressWarnings("unchecked")
     SimpleExplanation simpleExplanation = ExplainParser.parse(
@@ -28,11 +28,11 @@ public final class SimpleSolrExplain {
     return simpleExplanation;
   }
 
-  public static SimpleExplanation simpleEDismax(final String parsedQuery, final SimpleOrderedMap<String> explainMap) {
+  private static SimpleExplanation simpleEDismax(final String parsedQuery, final SimpleOrderedMap<String> explainMap) {
     return ExplainParser.parse(parsedQuery, explainMap);
   }
 
-  public static String simpleEDismaxJson(final QueryResponse queryResponse, final boolean prettyPrint) {
+  static String simpleEDismaxJson(final QueryResponse queryResponse, final boolean prettyPrint) {
     SimpleExplanation simpleExplanation = simpleEDismax(queryResponse);
     return simpleExplanation.toJson(prettyPrint);
   }

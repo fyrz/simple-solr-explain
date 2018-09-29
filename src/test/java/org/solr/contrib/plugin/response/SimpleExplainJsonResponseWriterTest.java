@@ -26,6 +26,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 
+@SolrTestCaseJ4.SuppressObjectReleaseTracker(bugUrl = "Unclear SolrTestCase behavior.")
 @SolrTestCaseJ4.SuppressSSL
 public class SimpleExplainJsonResponseWriterTest extends SolrJettyTestBase {
   private static JettySolrRunner jettySolrRunner;
@@ -36,7 +37,7 @@ public class SimpleExplainJsonResponseWriterTest extends SolrJettyTestBase {
     URL url = SimpleExplainJsonResponseWriterTest.class.getResource("/solr");
     String path = Paths.get(url.toURI()).normalize().toString();
     jettySolrRunner = createJetty(
-        path, "conf/solrconfig.xml",
+        path, "solrconfig.xml",
         "conf/schema.xml",
         null, true, null);
   }

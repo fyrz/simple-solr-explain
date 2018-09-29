@@ -14,13 +14,13 @@ public class FieldMatchSequenceTest {
 
   @Test
   public void isDescribedBy() {
-    final String inLine = " 0.49997503 = (MATCH) weight(title:xyz^10.0 in 2) [DefaultSimilarity], result of:";
+    final String inLine = " 0.49997503 = weight(title:xyz^10.0 in 2) [DefaultSimilarity], result of:";
     List<ExplainElement> explainElements = explainLineParser.parseSingleLine(inLine);
 
     FieldMatchSequence fieldMatchSequence = new FieldMatchSequence();
     assertThat(fieldMatchSequence.isDescribedBy(explainElements)).isTrue();
 
-    final String invalidLine = "0.5088134 = (MATCH) max plus 0.5 times others of:";
+    final String invalidLine = "0.5088134 = max of:";
     explainElements = explainLineParser.parseSingleLine(invalidLine);
     assertThat(fieldMatchSequence.isDescribedBy(explainElements)).isFalse();
   }

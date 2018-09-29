@@ -1,5 +1,7 @@
 package org.solr.contrib.explain;
 
+import java.io.IOException;
+
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.QueryResponse;
@@ -8,7 +10,7 @@ import org.solr.contrib.explain.model.SimpleExplanation;
 
 public class ExceptionsSolrExplainTest extends AbstractSolrExplainTest {
   @Test
-  public void catchAllQuery() throws SolrServerException {
+  public void catchAllQuery() throws SolrServerException, IOException {
     SolrQuery query = new SolrQuery("*:*");
     query.setShowDebugInfo(true);
 
@@ -20,7 +22,7 @@ public class ExceptionsSolrExplainTest extends AbstractSolrExplainTest {
   }
 
   @Test
-  public void noMatchQuery() throws SolrServerException {
+  public void noMatchQuery() throws SolrServerException, IOException {
     SolrQuery query = new SolrQuery("unknownToken");
     query.setShowDebugInfo(true);
 

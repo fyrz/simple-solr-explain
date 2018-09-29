@@ -10,14 +10,14 @@ import org.junit.BeforeClass;
 
 import java.io.IOException;
 
-@org.apache.lucene.util.LuceneTestCase.SuppressCodecs({"Lucene3x", "Lucene40"})
+//@org.apache.lucene.util.LuceneTestCase.SuppressCodecs({"Lucene3x", "Lucene40"})
 public abstract class AbstractSolrExplainTest extends SolrTestCaseJ4 {
 
   protected EmbeddedSolrServer server;
 
   @BeforeClass
   public static void initSolrCore() throws Exception {
-    SolrTestCaseJ4.initCore("solr/collection1/conf/solrconfig.xml", "solr/collection1/conf/schema.xml");
+    SolrTestCaseJ4.initCore("solr/collection1/solrconfig.xml", "solr/collection1/conf/schema.xml");
   }
 
   @Before

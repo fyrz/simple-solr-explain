@@ -1,5 +1,7 @@
 package org.solr.contrib.explain;
 
+import java.io.IOException;
+
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.QueryResponse;
@@ -9,7 +11,7 @@ import org.solr.contrib.explain.model.SimpleExplanation;
 public class SynonymSolrExplainTest extends AbstractSolrExplainTest {
 
   @Test
-  public void synonymQuery() throws SolrServerException {
+  public void synonymQuery() throws SolrServerException, IOException {
     // expands to bird and will match one document
     SolrQuery query = new SolrQuery("synonym");
     query.setShowDebugInfo(true);
@@ -22,7 +24,7 @@ public class SynonymSolrExplainTest extends AbstractSolrExplainTest {
   }
 
   @Test
-  public void multiSynonymQuery() throws SolrServerException {
+  public void multiSynonymQuery() throws SolrServerException, IOException {
     // expands to bird and battle and will match two documents
     SolrQuery query = new SolrQuery("othersynonym");
     query.setShowDebugInfo(true);

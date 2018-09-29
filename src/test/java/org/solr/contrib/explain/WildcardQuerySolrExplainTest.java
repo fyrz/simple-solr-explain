@@ -1,5 +1,7 @@
 package org.solr.contrib.explain;
 
+import java.io.IOException;
+
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.QueryResponse;
@@ -9,7 +11,7 @@ import org.solr.contrib.explain.model.SimpleExplanation;
 public class WildcardQuerySolrExplainTest extends AbstractSolrExplainTest {
 
   @Test
-  public void wildcardQuery() throws SolrServerException {
+  public void wildcardQuery() throws SolrServerException, IOException {
     SolrQuery query = new SolrQuery("quic*");
     query.setShowDebugInfo(true);
 
